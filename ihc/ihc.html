@@ -1,0 +1,1508 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mamãe Segura | Apoio Completo à Amamentação</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Variáveis de cores */
+    :root {
+      --primary: #e84393;
+      --primary-light: #fd79a8;
+      --primary-dark: #c44569;
+      --secondary: #0984e3;
+      --light: #f8f9fa;
+      --dark: #2d3436;
+      --success: #00b894;
+      --warning: #fdcb6e;
+      --danger: #d63031;
+      --gray: #dfe6e9;
+    }
+
+    /* Reset e Estilos Gerais */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    body {
+      background-color: var(--light);
+      color: var(--dark);
+      line-height: 1.7;
+    }
+
+    /* Tipografia */
+    h1, h2, h3, h4 {
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.5rem; }
+    h4 { font-size: 1.25rem; }
+
+    p {
+      margin-bottom: 1rem;
+      color: #555;
+    }
+
+    /* Layout */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Cabeçalho */
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 1.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      color: white;
+    }
+
+    .logo i {
+      font-size: 2rem;
+    }
+
+    /* Menu de Navegação */
+    .menu {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .menu-btn {
+      background: transparent;
+      border: none;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .menu-btn:hover, .menu-btn.active {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .menu-btn i {
+      font-size: 1.1rem;
+    }
+
+    /* Botões */
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .btn-secondary {
+      background-color: var(--secondary);
+      color: white;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    /* Seções */
+    .section {
+      padding: 4rem 0;
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+      animation: fadeIn 0.6s ease;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header p {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Cards */
+    .card {
+      background: white;
+      border-radius: 12px;
+      padding: 1.75rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: transform 0.3s, box-shadow 0.3s;
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .card-icon {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    /* Grid Layout */
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    /* Home - Destaques */
+    .destaques {
+      margin: 3rem 0;
+    }
+
+    .destaque-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 300px;
+      color: white;
+    }
+
+    .destaque-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    }
+
+    /* Abas */
+    .tab-menu {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 0.75rem 1.5rem;
+      background: var(--gray);
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    /* Vídeo */
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      margin: 1.5rem 0;
+      border-radius: 8px;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Lista de Vacinas */
+    .vacina-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .vacina-item {
+      background: white;
+      border-radius: 8px;
+      padding: 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .vacina-status {
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .status-pendente {
+      background: #fff3bf;
+      color: #e67700;
+    }
+
+    .status-concluido {
+      background: #d3f9d8;
+      color: #2b8a3e;
+    }
+
+    /* Formulários */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--gray);
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: border 0.3s;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    textarea.form-control {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* Comunidade */
+    .post {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .post-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .post-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    .post-meta {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .post-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .post-action {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #423030;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    /* Rodapé */
+    footer {
+      background: var(--dark);
+      color: white;
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .footer-links h4 {
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: #b2b2b2;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      color: white;
+      font-size: 1.25rem;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #b2b2b2;
+      font-size: 0.9rem;
+    }
+
+    /* Abas centralizadas */
+    .tab-menu {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    }
+
+    .tab-btn {
+    padding: 0.75rem 1.5rem;
+    background: var(--gray);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    }
+
+    .tab-btn.active {
+    background: var(--primary);
+    color: white;
+    }
+
+    /* Responsividade */
+    @media (max-width: 992px) {
+      .header-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      
+      .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1.75rem; }
+      
+      .section {
+        padding: 3rem 0;
+      }
+    }
+
+    /* Animações */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Utilitários */
+    .text-center { text-align: center; }
+    .mt-1 { margin-top: 0.5rem; }
+    .mt-2 { margin-top: 1rem; }
+    .mt-3 { margin-top: 1.5rem; }
+    .mt-4 { margin-top: 2rem; }
+    .mb-1 { margin-bottom: 0.5rem; }
+    .mb-2 { margin-bottom: 1rem; }
+    .mb-3 { margin-bottom: 1.5rem; }
+    .mb-4 { margin-bottom: 2rem; }
+  </style>
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header>
+    <div class="container header-container">
+      <a href="#" class="logo" data-section="home">
+        <img src="fotos/logo1.png" alt="Mulher amamentando" style="width: 60px; height: 60px;">
+        <span>Mamãe Segura</span>
+</a>
+      
+      <div class="menu">
+        <button class="menu-btn active" data-section="home">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </button>
+        <button class="menu-btn" data-section="amamentacao">
+          <i class="fas fa-child"></i>
+          <span>Amamentação</span>
+        </button>
+        <button class="menu-btn" data-section="vacinas">
+          <i class="fas fa-syringe"></i>
+          <span>Vacinas</span>
+        </button>
+        <button class="menu-btn" data-section="comunidade">
+          <i class="fas fa-users"></i>
+          <span>Comunidade</span>
+        </button>
+      </div>
+    </div>
+  </header>
+  
+  <!-- Conteúdo Principal -->
+  <main>
+    <!-- Seção Home -->
+    <section id="home" class="section active">
+      <div class="container">
+        <div class="section-header">
+          <h1>Seu Acompanhamento Completo de Amamentação</h1>
+          <p>O acompanhamento completo para você e o seu  bebê</p>
+        </div>
+        
+        <div class="grid grid-3">
+          <div class="card">
+            <div class="card-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3>Materiais Educativos</h3>
+            <p>Acesso a vídeos, guias e infográficos sobre todos os aspectos da amamentação.</p>
+            <button class="btn btn-primary mt-2" data-section="amamentacao">Acessar Materiais</button>
+          </div>
+          
+          <div class="card">
+            <div class="card-icon">
+              <i class="fas fa-calendar-check"></i>
+            </div>
+            <h3>Calendário de Vacinas</h3>
+            <p>Acompanhe as vacinas do seu bebê e receba lembretes automáticos.</p>
+            <button class="btn btn-primary mt-2" data-section="vacinas">Ver Calendário</button>
+          </div>
+          
+          <div class="card">
+            <div class="card-icon">
+              <i class="fas fa-comments"></i>
+            </div>
+            <h3>Comunidade</h3>
+            <p>Conecte-se com outras mães, compartilhe experiências e tire dúvidas.</p>
+            <button class="btn btn-primary mt-2" data-section="comunidade">Participar</button>
+          </div>
+        </div>
+        
+        <div class="destaques mt-4">
+          <h2 class="text-center">Destaques</h2>
+          
+          <div class="grid grid-3 mt-2">
+            <div class="destaque-card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80') no-repeat center/cover;">
+              <div class="destaque-content">
+                <h3>Guia Completo de Amamentação</h3>
+                <p>Tudo o que você precisa saber para uma amamentação tranquila</p>
+                <button class="btn btn-outline mt-1" data-section="amamentacao">Ler Agora</button>
+              </div>
+            </div>
+            
+            <div class="destaque-card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80') no-repeat center/cover;">
+              <div class="destaque-content">
+                <h3>Introdução Alimentar</h3>
+                <p>Como começar a alimentação sólida do seu bebê</p>
+                <button class="btn btn-outline mt-1" data-section="nutricao">Ver Cardápios</button>
+              </div>
+            </div>
+            
+            <div class="destaque-card" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1579165466749-5650df9b7f5e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80') no-repeat center/cover;">
+              <div class="destaque-content">
+                <h3>Fale com um Especialista</h3>
+                <p>Tire suas dúvidas com nossos profissionais</p>
+                <button class="btn btn-outline mt-1" data-section="amamentacao">Agendar Consulta</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Seção Amamentação -->
+    <section id="amamentacao" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Apoio à Amamentação</h2>
+          <p>Encontre aqui tudo o que você precisa para uma amamentação saudável e tranquila</p>
+        </div>
+        
+        <div class="tab-menu">
+            <button class="tab-btn active" data-tab="materiais">Materiais Educativos</button>
+            <button class="tab-btn" data-tab="especialistas">Fale com Especialista</button>
+            <button class="tab-btn" data-tab="nutricao">Nutrição para Lactantes</button>
+            <button class="tab-btn" data-tab="problemas">Problemas Comuns</button>
+        </div>
+        
+        <div id="materiais" class="tab-content active">
+          <div class="grid grid-3">
+            <div class="card">
+              <h3>Vídeo: Posições para Amamentar</h3>
+              <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/9Q8P8mdBfYk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <p>Aprenda as melhores posições para amamentar sem dor e com conforto.</p>
+            </div>
+            
+            <div class="card">
+              <h3>Guia: Amamentação após Cesárea</h3>
+              <img src="fotos/posicoes-amamentacao-raguebi-300x290.png" alt="Amamentação após cesárea" style="width:100%; border-radius:8px; margin-bottom:1rem;">
+              <p>Dicas práticas para começar a amamentação depois de uma cesariana.</p>
+              <button class="btn btn-secondary mt-2">Baixar Guia (PDF)</button>
+            </div>
+            
+            <div class="card">
+              <h3>Infográfico: Sinais de Fome</h3>
+              <img src="fotos/Sinais-de-Fome-do-Bebe.webp" alt="Sinais de fome do bebê" style="width:100%; border-radius:8px; margin-bottom:1rem;">
+              <p>Como identificar quando seu bebê está com fome antes do choro.</p>
+              <button class="btn btn-secondary mt-2">Visualizar Infográfico</button>
+            </div>
+          </div>
+        </div>
+        
+        <div id="especialistas" class="tab-content">
+          <div class="grid grid-3">
+            <div class="card">
+              <h3>Consultoria Online</h3>
+              <p>Agende uma videochamada com nossas consultoras de amamentação certificadas.</p>
+              <div class="form-group mt-2">
+                <label for="data-consulta">Escolha uma data:</label>
+                <input type="date" id="data-consulta" class="form-control mt-1">
+              </div>
+              <button class="btn btn-primary">Agendar Consulta</button>
+            </div>
+            
+            <div class="card">
+              <h3>Envie sua Dúvida</h3>
+              <p>Nossos especialistas respondem em até 24 horas.</p>
+              <div class="form-group mt-2">
+                <label for="pergunta">Sua pergunta:</label>
+                <textarea id="pergunta" class="form-control mt-1" placeholder="Descreva sua dúvida..."></textarea>
+              </div>
+              <button class="btn btn-primary">Enviar Dúvida</button>
+            </div>
+            
+            <div class="card">
+              <h3>Profissionais Disponíveis</h3>
+              <ul style="list-style-type: none;">
+                <li class="mt-2"><strong>Dra. Ana Silva</strong> - Pediatra</li>
+                <li class="mt-2"><strong>Dra. Carla Mendes</strong> - Consultora de Amamentação</li>
+                <li class="mt-2"><strong>Dra. Juliana Costa</strong> - Nutricionista Materno-Infantil</li>
+              </ul>
+              <button class="btn btn-outline mt-3">Ver Todos</button>
+            </div>
+          </div>
+        </div>
+        
+        <div id="nutricao" class="tab-content">
+          <div class="grid grid-3">
+            <div class="card">
+              <h3>Alimentos que Aumentam a Produção de Leite</h3>
+              <ul class="mt-2">
+                <li class="mt-1">Água (pelo menos 3L por dia)</li>
+                <li class="mt-1">Aveia</li>
+                <li class="mt-1">Frutas como mamão e banana</li>
+                <li class="mt-1">Vegetais verde-escuros</li>
+                <li class="mt-1">Sementes de girassol e gergelim</li>
+              </ul>
+            </div>
+            
+            <div class="card">
+              <h3>Cardápio Semanal</h3>
+              <p class="mt-2">Exemplo de cardápio para lactantes:</p>
+              <table style="width:100%; margin-top:1rem; border-collapse: collapse;">
+                <tr>
+                  <th style="text-align:left; padding:0.5rem 0; border-bottom:1px solid #eee;">Refeição</th>
+                  <th style="text-align:left; padding:0.5rem 0; border-bottom:1px solid #eee;">Sugestão</th>
+                </tr>
+                <tr>
+                  <td style="padding:0.5rem 0; border-bottom:1px solid #eee;">Café da manhã</td>
+                  <td style="padding:0.5rem 0; border-bottom:1px solid #eee;">Vitamina de banana com aveia</td>
+                </tr>
+                <tr>
+                  <td style="padding:0.5rem 0; border-bottom:1px solid #eee;">Lanche</td>
+                  <td style="padding:0.5rem 0; border-bottom:1px solid #eee;">Mix de castanhas</td>
+                </tr>
+                <tr>
+                  <td style="padding:0.5rem 0;">Almoço</td>
+                  <td style="padding:0.5rem 0;">Arroz, feijão, carne e salada</td>
+                </tr>
+              </table>
+              <button class="btn btn-secondary mt-2">Baixar Cardápio Completo</button>
+            </div>
+            
+            <div class="card">
+              <h3>Receitas para Lactantes</h3>
+              <div class="mt-2">
+                <h4>Cookies de Aveia e Banana</h4>
+                <p>Ingredientes: 2 bananas, 1 xícara de aveia, canela.</p>
+              </div>
+              <div class="mt-2">
+                <h4>Smoothie Energético</h4>
+                <p>Ingredientes: 1 banana, 1 colher de pasta de amendoim, 200ml de leite.</p>
+              </div>
+              <button class="btn btn-outline mt-2">Ver Mais Receitas</button>
+            </div>
+          </div>
+        </div>
+        
+        <div id="problemas" class="tab-content">
+          <div class="grid grid-3">
+            <div class="card">
+              <h3>Fissuras Mamárias</h3>
+              <p class="mt-2">Como prevenir e tratar rachaduras nos seios:</p>
+              <ul class="mt-1">
+                <li class="mt-1">Corrigir a pega do bebê</li>
+                <li class="mt-1">Usar pomadas à base de lanolina</li>
+                <li class="mt-1">Expor os seios ao sol por 10 minutos/dia</li>
+              </ul>
+            </div>
+            
+            <div class="card">
+              <h3>Ingurgitamento Mamário</h3>
+              <p class="mt-2">Quando os seios ficam muito cheios e doloridos:</p>
+              <ul class="mt-1">
+                <li class="mt-1">Amamentar com frequência</li>
+                <li class="mt-1">Aplicar compressas mornas antes das mamadas</li>
+                <li class="mt-1">Massagear suavemente</li>
+              </ul>
+            </div>
+            
+            <div class="card">
+              <h3>Pouca Produção de Leite</h3>
+              <p class="mt-2">O que fazer quando parece que o leite está diminuindo:</p>
+              <ul class="mt-1">
+                <li class="mt-1">Aumentar a frequência das mamadas</li>
+                <li class="mt-1">Garantir boa hidratação e alimentação</li>
+                <li class="mt-1">Reduzir o estresse</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Seção Vacinas -->
+    <section id="vacinas" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Guia de Vacinação</h2>
+          <p>Acompanhe o calendário de vacinas do seu bebê e receba lembretes importantes</p>
+        </div>
+        
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>Calendário do Bebê</h3>
+            <div class="vacina-list mt-2">
+              <div class="vacina-item">
+                <div>
+                  <h4>BCG (1 dose)</h4>
+                  <p>Idade: Ao nascer</p>
+                </div>
+                <span class="vacina-status status-concluido">Concluído</span>
+              </div>
+              
+              <div class="vacina-item">
+                <div>
+                  <h4>Hepatite B (1ª dose)</h4>
+                  <p>Idade: Ao nascer</p>
+                </div>
+                <span class="vacina-status status-concluido">Concluído</span>
+              </div>
+              
+              <div class="vacina-item">
+                <div>
+                  <h4>Pentavalente (1ª dose)</h4>
+                  <p>Idade: 2 meses</p>
+                </div>
+                <span class="vacina-status status-pendente">Pendente</span>
+              </div>
+              
+              <div class="vacina-item">
+                <div>
+                  <h4>Pneumocócica (1ª dose)</h4>
+                  <p>Idade: 2 meses</p>
+                </div>
+                <span class="vacina-status status-pendente">Pendente</span>
+              </div>
+            </div>
+            <button class="btn btn-outline mt-2">Ver Calendário Completo</button>
+          </div>
+          
+          <div class="card">
+            <h3>Vacinas para Gestantes</h3>
+            <div class="vacina-list mt-2">
+              <div class="vacina-item">
+                <div>
+                  <h4>Influenza (Gripe)</h4>
+                  <p>Qualquer período da gestação</p>
+                </div>
+                <span class="vacina-status status-concluido">Concluído</span>
+              </div>
+              
+              <div class="vacina-item">
+                <div>
+                  <h4>dTpa (Coqueluche)</h4>
+                  <p>A partir da 20ª semana</p>
+                </div>
+                <span class="vacina-status status-pendente">Pendente</span>
+              </div>
+            </div>
+            <button class="btn btn-outline mt-2">Saiba Mais</button>
+          </div>
+          
+          <div class="card">
+            <h3>Lembretes de Vacinação</h3>
+            <p class="mt-2">Receba alertas sobre as próximas vacinas:</p>
+            
+            <div class="form-group mt-2">
+              <label for="email-vacina">Seu e-mail:</label>
+              <input type="email" id="email-vacina" class="form-control mt-1" placeholder="seu@email.com">
+            </div>
+            
+            <div class="form-group mt-2">
+              <label for="celular-vacina">Celular (opcional):</label>
+              <input type="tel" id="celular-vacina" class="form-control mt-1" placeholder="(00) 00000-0000">
+            </div>
+            
+            <button class="btn btn-primary mt-2">Ativar Lembretes</button>
+          </div>
+        </div>
+        
+        <div class="card mt-3">
+          <h3>Informações sobre as Vacinas</h3>
+          <div class="tab-menu mt-2">
+            <button class="tab-btn active" data-tab="bcg">BCG</button>
+            <button class="tab-btn" data-tab="hepatite">Hepatite B</button>
+            <button class="tab-btn" data-tab="pentavalente">Pentavalente</button>
+          </div>
+          
+          <div id="bcg" class="tab-content active mt-2">
+            <p><strong>O que previne:</strong> Formas graves de tuberculose</p>
+            <p><strong>Possíveis reações:</strong> Pequena ferida no local da aplicação que pode levar algumas semanas para cicatrizar</p>
+            <p><strong>Contraindicações:</strong> Bebês com imunodeficiência</p>
+          </div>
+          
+          <div id="hepatite" class="tab-content mt-2">
+            <p><strong>O que previne:</strong> Hepatite B</p>
+            <p><strong>Possíveis reações:</strong> Dor no local da injeção, febre baixa</p>
+            <p><strong>Contraindicações:</strong> Hipersensibilidade a componentes da vacina</p>
+          </div>
+          
+          <div id="pentavalente" class="tab-content mt-2">
+            <p><strong>O que previne:</strong> Difteria, tétano, coqueluche, hepatite B e meningite por Haemophilus influenzae tipo b</p>
+            <p><strong>Possíveis reações:</strong> Febre, irritabilidade, sonolência</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Seção Nutrição -->
+    <section id="nutricao" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Nutrição para Mãe e Bebê</h2>
+          <p>Guias completos de alimentação para gestantes, lactantes e introdução alimentar</p>
+        </div>
+        
+        <div class="tab-menu">
+          <button class="tab-btn active" data-tab="gestante">Para Gestantes</button>
+          <button class="tab-btn" data-tab="lactante">Para Lactantes</button>
+          <button class="tab-btn" data-tab="bebe">Para o Bebê</button>
+        </div>
+        
+        <div id="gestante" class="tab-content active">
+          <div class="grid grid-3">
+            <div class="card">
+              <h3>Alimentação no 1º Trimestre</h3>
+              <p class="mt-2">Dicas para lidar com enjoos:</p>
+              <ul class="mt-1">
+                <li class="mt-1">Comer pequenas porções várias vezes ao dia</li>
+                <li class="mt-1">Priorizar alimentos frios e secos (torradas, biscoitos)</li>
+                <li class="mt-1">Gengibre pode ajudar com náuseas</li>
+              </ul>
+            </div>
+            
+            <div class="card">
+              <h3>Suplementação</h3>
+              <p class="mt-2">Nutrientes essenciais:</p>
+              <ul class="mt-1">
+                <li class="mt-1">Ácido fólic
+
+
+            <!-- Continuação da Seção Nutrição -->
+            <div class="card">
+              <h3>Alimentos a Evitar</h3>
+              <p class="mt-2">Durante a gestação:</p>
+              <ul class="mt-1">
+                <li class="mt-1">Peixes crus e carnes mal passadas</li>
+                <li class="mt-1">Ovos crus ou mal cozidos</li>
+                <li class="mt-1">Cafeína em excesso</li>
+                <li class="mt-1">Bebidas alcoólicas</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div id="lactante" class="tab-content">
+          <div class="grid grid-3">
+            <div class="card">
+              <h3>Alimentos que Aumentam o Leite</h3>
+              <ul class="mt-2">
+                <li class="mt-1">Aveia</li>
+                <li class="mt-1">Frutas como mamão e banana</li>
+                <li class="mt-1">Vegetais verde-escuros</li>
+                <li class="mt-1">Sementes de girassol e gergelim</li>
+                <li class="mt-1">Muita água (pelo menos 3L/dia)</li>
+              </ul>
+            </div>
+            
+            <div class="card">
+              <h3>Cardápio Semanal</h3>
+              <table style="width:100%; margin-top:1rem; border-collapse: collapse;">
+                <tr>
+                  <th style="text-align:left; padding:0.5rem 0; border-bottom:1px solid #eee;">Refeição</th>
+                  <th style="text-align:left; padding:0.5rem 0; border-bottom:1px solid #eee;">Sugestão</th>
+                </tr>
+                <tr>
+                  <td style="padding:0.5rem 0; border-bottom:1px solid #eee;">Café da manhã</td>
+                  <td style="padding:0.5rem 0; border-bottom:1px solid #eee;">Vitamina de banana com aveia</td>
+                </tr>
+                <tr>
+                  <td style="padding:0.5rem 0; border-bottom:1px solid #eee;">Lanche</td>
+                  <td style="padding:0.5rem 0; border-bottom:1px solid #eee;">Mix de castanhas</td>
+                </tr>
+                <tr>
+                  <td style="padding:0.5rem 0;">Almoço</td>
+                  <td style="padding:0.5rem 0;">Arroz, feijão, carne e salada</td>
+                </tr>
+              </table>
+              <button class="btn btn-secondary mt-2">Baixar Cardápio Completo</button>
+            </div>
+            
+            <div class="card">
+              <h3>Receitas para Lactantes</h3>
+              <div class="mt-2">
+                <h4>Cookies de Aveia e Banana</h4>
+                <p>Ingredientes: 2 bananas, 1 xícara de aveia, canela.</p>
+              </div>
+              <div class="mt-2">
+                <h4>Smoothie Energético</h4>
+                <p>Ingredientes: 1 banana, 1 colher de pasta de amendoim, 200ml de leite.</p>
+              </div>
+              <button class="btn btn-outline mt-2">Ver Mais Receitas</button>
+            </div>
+          </div>
+        </div>
+        
+        <div id="bebe" class="tab-content">
+          <div class="grid grid-3">
+            <div class="card">
+              <h3>Introdução Alimentar (6 meses)</h3>
+              <p class="mt-2">Primeiros alimentos:</p>
+              <ul class="mt-1">
+                <li class="mt-1">Frutas amassadas (banana, mamão)</li>
+                <li class="mt-1">Legumes cozidos e amassados (batata, cenoura)</li>
+                <li class="mt-1">Papas de cereais não processados</li>
+              </ul>
+            </div>
+            
+            <div class="card">
+              <h3>Cronograma Mês a Mês</h3>
+              <table style="width:100%; margin-top:1rem; border-collapse: collapse;">
+                <tr>
+                  <th style="text-align:left; padding:0.5rem 0; border-bottom:1px solid #eee;">Idade</th>
+                  <th style="text-align:left; padding:0.5rem 0; border-bottom:1px solid #eee;">Novos Alimentos</th>
+                </tr>
+                <tr>
+                  <td style="padding:0.5rem 0; border-bottom:1px solid #eee;">6 meses</td>
+                  <td style="padding:0.5rem 0; border-bottom:1px solid #eee;">Frutas e legumes amassados</td>
+                </tr>
+                <tr>
+                  <td style="padding:0.5rem 0; border-bottom:1px solid #eee;">7-8 meses</td>
+                  <td style="padding:0.5rem 0; border-bottom:1px solid #eee;">Carnes moídas, gema de ovo</td>
+                </tr>
+                <tr>
+                  <td style="padding:0.5rem 0;">9-12 meses</td>
+                  <td style="padding:0.5rem 0;">Alimentos em pedaços pequenos</td>
+                </tr>
+              </table>
+            </div>
+            
+            <div class="card">
+              <h3>Alimentos Proibidos</h3>
+              <ul class="mt-2">
+                <li class="mt-1">Mel (até 1 ano)</li>
+                <li class="mt-1">Leite de vaca integral (até 1 ano)</li>
+                <li class="mt-1">Açúcar e alimentos industrializados</li>
+                <li class="mt-1">Sal em excesso</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Seção Primeiros Socorros -->
+    <section id="primeiros-socorros" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Primeiros Socorros e Cuidados</h2>
+          <p>Saiba como agir em situações de emergência com seu bebê</p>
+        </div>
+        
+        <div class="grid grid-3">
+          <div class="card">
+            <h3>Engasgo</h3>
+            <div class="video-container mt-2">
+              <iframe src="https://www.youtube.com/embed/exemplo456" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <p class="mt-2">Passo a passo para desengasgar um bebê:</p>
+            <ol class="mt-1">
+              <li class="mt-1">Posicione o bebê de bruços em seu antebraço</li>
+              <li class="mt-1">Dê 5 tapas firmes entre as omoplatas</li>
+              <li class="mt-1">Se não resolver, vire e faça compressões torácicas</li>
+            </ol>
+          </div>
+          
+          <div class="card">
+            <h3>Febre</h3>
+            <p class="mt-2">O que fazer quando o bebê está com febre:</p>
+            <ul class="mt-1">
+              <li class="mt-1">Medir a temperatura retal (mais precisa)</li>
+              <li class="mt-1">Oferecer líquidos com frequência</li>
+              <li class="mt-1">Banho morno (não frio)</li>
+              <li class="mt-1">Medicação apenas com orientação médica</li>
+            </ul>
+            <div class="mt-2">
+              <h4>Quando procurar o médico:</h4>
+              <ul class="mt-1">
+                <li class="mt-1">Febre acima de 38°C em bebês < 3 meses</li>
+                <li class="mt-1">Febre persistente por mais de 24h</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="card">
+            <h3>Cólicas</h3>
+            <p class="mt-2">Técnicas para aliviar cólicas:</p>
+            <ul class="mt-1">
+              <li class="mt-1">Massagem abdominal no sentido horário</li>
+              <li class="mt-1">Compressa morna na barriga</li>
+              <li class="mt-1">Posição "avião" (bebê de bruços no antebraço)</li>
+            </ul>
+            <div class="mt-2">
+              <h4>Alimentação materna:</h4>
+              <p>Alguns alimentos podem piorar as cólicas:</p>
+              <ul class="mt-1">
+                <li class="mt-1">Leite e derivados</li>
+                <li class="mt-1">Cafeína</li>
+                <li class="mt-1">Alimentos gasosos (feijão, brócolis)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card mt-3">
+          <h3>Kit de Primeiros Socorros</h3>
+          <div class="grid grid-3 mt-2">
+            <div>
+              <h4>Itens essenciais:</h4>
+              <ul class="mt-1">
+                <li class="mt-1">Termômetro digital</li>
+                <li class="mt-1">Soro fisiológico</li>
+                <li class="mt-1">Antisséptico sem álcool</li>
+                <li class="mt-1">Gaze e esparadrapo</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4>Medicação (só com receita):</h4>
+              <ul class="mt-1">
+                <li class="mt-1">Antitérmico infantil</li>
+                <li class="mt-1">Pomada para assaduras</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4>Contatos de emergência:</h4>
+              <ul class="mt-1">
+                <li class="mt-1">Pediatra: (XX) XXXX-XXXX</li>
+                <li class="mt-1">SAMU: 192</li>
+                <li class="mt-1">Pronto-socorro infantil mais próximo</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Seção Profissionais -->
+    <section id="profissionais" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Profissionais de Saúde</h2>
+          <p>Encontre e agende consultas com especialistas em saúde materno-infantil</p>
+        </div>
+        
+        <div class="grid grid-3">
+          <div class="card">
+            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1rem;">
+              <div style="width:80px; height:80px; border-radius:50%; background:#ffb8d9; display:flex; align-items:center; justify-content:center; color:white; font-size:2rem; font-weight:bold;">AS</div>
+              <div>
+                <h3>Dra. Ana Silva</h3>
+                <p>Pediatra</p>
+                <div style="display:flex; align-items:center; gap:0.25rem; color:#ffd43b;">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <span style="color:#666; margin-left:0.5rem;">4.7 (128)</span>
+                </div>
+              </div>
+            </div>
+            <p>Especialista em amamentação e desenvolvimento infantil. Atende há 15 anos.</p>
+            <div class="mt-2">
+              <p><i class="fas fa-map-marker-alt" style="color:var(--primary);"></i> São Paulo - SP</p>
+              <p><i class="fas fa-check-circle" style="color:var(--success);"></i> Atendimento online disponível</p>
+            </div>
+            <button class="btn btn-primary mt-2" style="width:100%;">Agendar Consulta</button>
+          </div>
+          
+          <div class="card">
+            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1rem;">
+              <div style="width:80px; height:80px; border-radius:50%; background:#b2e0ff; display:flex; align-items:center; justify-content:center; color:white; font-size:2rem; font-weight:bold;">CM</div>
+              <div>
+                <h3>Dra. Carla Mendes</h3>
+                <p>Consultora de Amamentação</p>
+                <div style="display:flex; align-items:center; gap:0.25rem; color:#ffd43b;">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <span style="color:#666; margin-left:0.5rem;">5.0 (87)</span>
+                </div>
+              </div>
+            </div>
+            <p>Consultora internacional certificada pela IBCLC. Atendimento domiciliar.</p>
+            <div class="mt-2">
+              <p><i class="fas fa-map-marker-alt" style="color:var(--primary);"></i> Rio de Janeiro - RJ</p>
+              <p><i class="fas fa-check-circle" style="color:var(--success);"></i> Plantão 24h para emergências</p>
+            </div>
+            <button class="btn btn-primary mt-2" style="width:100%;">Agendar Consulta</button>
+          </div>
+          
+          <div class="card">
+            <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1rem;">
+              <div style="width:80px; height:80px; border-radius:50%; background:#d8f5a2; display:flex; align-items:center; justify-content:center; color:white; font-size:2rem; font-weight:bold;">JC</div>
+              <div>
+                <h3>Dra. Juliana Costa</h3>
+                <p>Nutricionista Materno-Infantil</p>
+                <div style="display:flex; align-items:center; gap:0.25rem; color:#ffd43b;">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <span style="color:#666; margin-left:0.5rem;">5.0 (64)</span>
+                </div>
+              </div>
+            </div>
+            <p>Especialista em nutrição para gestantes e introdução alimentar.</p>
+            <div class="mt-2">
+              <p><i class="fas fa-map-marker-alt" style="color:var(--primary);"></i> Belo Horizonte - MG</p>
+              <p><i class="fas fa-check-circle" style="color:var(--success);"></i> Atendimento online disponível</p>
+            </div>
+            <button class="btn btn-primary mt-2" style="width:100%;">Agendar Consulta</button>
+          </div>
+        </div>
+        
+        <div class="card mt-3">
+          <h3>Filtros de Busca</h3>
+          <div class="grid grid-3 mt-2">
+            <div class="form-group">
+              <label for="especialidade">Especialidade:</label>
+              <select id="especialidade" class="form-control mt-1">
+                <option>Todas</option>
+                <option>Pediatra</option>
+                <option>Consultora de Amamentação</option>
+                <option>Nutricionista</option>
+                <option>Obstetra</option>
+                <option>Psicólogo Perinatal</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="localizacao">Localização:</label>
+              <select id="localizacao" class="form-control mt-1">
+                <option>Todas</option>
+                <option>São Paulo - SP</option>
+                <option>Rio de Janeiro - RJ</option>
+                <option>Belo Horizonte - MG</option>
+                <option>Online</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="disponibilidade">Disponibilidade:</label>
+              <select id="disponibilidade" class="form-control mt-1">
+                <option>Todas</option>
+                <option>Plantão 24h</option>
+                <option>Atendimento Domiciliar</option>
+                <option>Online</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-secondary mt-2">Buscar Profissionais</button>
+        </div>
+      </div>
+    </section>
+
+    
+    
+    <!-- Seção Comunidade -->
+    <section id="comunidade" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Comunidade de Mães</h2>
+          <p>Conecte-se com outras mães, compartilhe experiências e encontre apoio</p>
+        </div>
+        
+        <div class="grid" style="grid-template-columns: 2fr 1fr; gap: 2rem;">
+          <div>
+            <div class="card">
+              <h3>Novas Postagens</h3>
+              
+              <div class="post">
+                <div class="post-header">
+                  <div class="post-avatar">AC</div>
+                  <div>
+                    <h4>Como lidar com cólicas?</h4>
+                    <p class="post-meta">Postado por Ana Clara · 2 horas atrás</p>
+                  </div>
+                </div>
+                <p>Meu bebê de 1 mês chora muito após as mamadas, principalmente à noite. Já tentei massagem e compressa morna, mas não resolve. Alguém tem outras dicas?</p>
+                <div class="post-actions">
+                  <div class="post-action">
+                    <i class="far fa-comment"></i>
+                    <span>15 respostas</span>
+                  </div>
+                  <div class="post-action">
+                    <i class="far fa-heart"></i>
+                    <span>28 curtidas</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="post">
+                <div class="post-header">
+                  <div class="post-avatar">JM</div>
+                  <div>
+                    <h4>Relato de parto natural</h4>
+                    <p class="post-meta">Postado por Juliana M. · 1 dia atrás</p>
+                  </div>
+                </div>
+                <p>Compartilhando minha experiência positiva de parto natural no SUS. Foi intenso mas incrível! Estou à disposição para tirar dúvidas de mamães que estão se preparando.</p>
+                <div class="post-actions">
+                  <div class="post-action">
+                    <i class="far fa-comment"></i>
+                    <span>32 respostas</span>
+                  </div>
+                  <div class="post-action">
+                    <i class="far fa-heart"></i>
+                    <span>104 curtidas</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-group mt-3">
+                <textarea class="form-control" placeholder="Compartilhe sua dúvida ou experiência..."></textarea>
+                <button class="btn btn-primary mt-2">Publicar</button>
+              </div>
+            </div>
+          </div>
+          
+          <div>
+            <div class="card">
+              <h3>Grupos Populares</h3>
+              <ul style="list-style:none;">
+                <li class="mt-2" style="padding:0.75rem; border-radius:8px; background:#f8f9fa; display:flex; align-items:center; gap:1rem;">
+                  <i class="fas fa-users" style="color:var(--primary);"></i>
+                  <span>Mães de Bebês Prematuros</span>
+                </li>
+                <li class="mt-2" style="padding:0.75rem; border-radius:8px; background:#f8f9fa; display:flex; align-items:center; gap:1rem;">
+                  <i class="fas fa-users" style="color:var(--primary);"></i>
+                  <span>Amamentação após Cesárea</span>
+                </li>
+                <li class="mt-2" style="padding:0.75rem; border-radius:8px; background:#f8f9fa; display:flex; align-items:center; gap:1rem;">
+                  <i class="fas fa-users" style="color:var(--primary);"></i>
+                  <span>Mães Veganas</span>
+                </li>
+                <li class="mt-2" style="padding:0.75rem; border-radius:8px; background:#f8f9fa; display:flex; align-items:center; gap:1rem;">
+                  <i class="fas fa-users" style="color:var(--primary);"></i>
+                  <span>Gêmeos e Múltiplos</span>
+                </li>
+              </ul>
+              <button class="btn btn-outline mt-2" style="width:100%;">Ver Todos os Grupos</button>
+            </div>
+            
+            <div class="card mt-3">
+              <h3>Eventos Próximos</h3>
+              <div class="mt-2" style="display:flex; gap:1rem; padding:0.75rem; border-radius:8px; background:#f8f9fa;">
+                <div style="background:var(--primary); color:white; padding:0.5rem; border-radius:8px; text-align:center; min-width:50px;">
+                  <div style="font-weight:bold; font-size:1.25rem;">15</div>
+                  <div>MAI</div>
+                </div>
+                <div>
+                  <h4 style="margin-bottom:0.25rem;">Workshop de Amamentação</h4>
+                  <p style="color:#666; font-size:0.9rem;">Online · 10:00 - 12:00</p>
+                </div>
+              </div>
+              
+              <div class="mt-2" style="display:flex; gap:1rem; padding:0.75rem; border-radius:8px; background:#f8f9fa;">
+                <div style="background:var(--primary); color:white; padding:0.5rem; border-radius:8px; text-align:center; min-width:50px;">
+                  <div style="font-weight:bold; font-size:1.25rem;">22</div>
+                  <div>MAI</div>
+                </div>
+                <div>
+                  <h4 style="margin-bottom:0.25rem;">Introdução Alimentar</h4>
+                  <p style="color:#666; font-size:0.9rem;">Hospital XYZ · 14:00 - 16:00</p>
+                </div>
+              </div>
+              
+              <button class="btn btn-outline mt-2" style="width:100%;">Ver Todos os Eventos</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <!-- Rodapé -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#" class="footer-logo">Mamãe Segura</a>
+          <p>Apoio completo para mães de primeira viagem, com informações confiáveis e uma comunidade acolhedora.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Links Rápidos</h4>
+          <ul>
+            <li><a href="#" data-section="home">Home</a></li>
+            <li><a href="#" data-section="amamentacao">Amamentação</a></li>
+            <li><a href="#" data-section="vacinas">Vacinas</a></li>
+            <li><a href="#" data-section="nutricao">Nutrição</a></li>
+            <li><a href="#" data-section="comunidade">Comunidade</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Recursos</h4>
+          <ul>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Perguntas Frequentes</a></li>
+            <li><a href="#">Termos de Uso</a></li>
+            <li><a href="#">Política de Privacidade</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Contato</h4>
+          <ul>
+            <li><i class="fas fa-envelope"></i> contato@mamaesegura.com.br</li>
+            <li><i class="fas fa-phone"></i> (11) 99999-9999</li>
+            <li><i class="fas fa-map-marker-alt"></i> São Paulo - SP</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>© 2024 Mamãe Segura. Todos os direitos reservados.</p>
+        <p class="mt-1">Desenvolvido com ❤️ para mães e bebês</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- JavaScript -->
+  <script>
+    // Navegação entre seções principais
+    document.querySelectorAll('[data-section]').forEach(element => {
+      element.addEventListener('click', (e) => {
+        e.preventDefault();
+        const sectionId = element.getAttribute('data-section');
+        
+        // Remove classe active de todos os botões e seções
+        document.querySelectorAll('.menu-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+        
+        // Adiciona active ao botão clicado e sua seção correspondente
+        if (element.classList.contains('menu-btn')) {
+          element.classList.add('active');
+        } else {
+          document.querySelector(`.menu-btn[data-section="${sectionId}"]`).classList.add('active');
+        }
+        
+        document.getElementById(sectionId).classList.add('active');
+        
+        // Scroll suave para o topo
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    });
+    
+    // Navegação entre abas
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabId = btn.getAttribute('data-tab');
+        const parent = btn.closest('.section') || btn.closest('.tab-content');
+        
+        // Remove active de todos os botões e conteúdos dentro do mesmo container
+        parent.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        parent.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+        
+        // Adiciona active ao botão clicado e conteúdo correspondente
+        btn.classList.add('active');
+        if (parent.querySelector(`#${tabId}`)) {
+          parent.querySelector(`#${tabId}`).classList.add('active');
+        }
+      });
+    });
+    
+    // Navegação entre subseções
+    document.querySelectorAll('.submenu-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const subsectionId = btn.getAttribute('data-subsection');
+        const parentSection = btn.closest('.section');
+        
+        // Remove active de todos os botões e subseções dentro da seção pai
+        parentSection.querySelectorAll('.submenu-btn').forEach(b => b.classList.remove('active'));
+        parentSection.querySelectorAll('.subsection').forEach(s => s.classList.remove('active'));
+        
+        // Adiciona active ao botão clicado e sua subseção correspondente
+        btn.classList.add('active');
+        parentSection.getElementById(subsectionId).classList.add('active');
+      });
+    });
+    
+    // Simular envio de formulário
+    document.querySelectorAll('button:not([data-section]):not([data-tab])').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        if (!btn.hasAttribute('type') || btn.getAttribute('type') !== 'submit') {
+          e.preventDefault();
+          alert('Funcionalidade ativada! Em um sistema real, esta ação enviaria os dados.');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
